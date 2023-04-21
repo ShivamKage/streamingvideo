@@ -71,7 +71,11 @@ function Header() {
             <ul>
               {suggestions.length !== 0 &&
                 suggestions.map((data, index) => (
-                  <li className="px-2 py-1 hover:bg-gray-100" key={index}>
+                  <li
+                    className="px-2 py-1 hover:bg-gray-100"
+                    key={index}
+                    onClick={() => (console.log("Side pressed"))}
+                  >
                     🔎︎ {data}
                   </li>
                 ))}
