@@ -31,6 +31,9 @@ function Header() {
     };
   }, [searchQuery]);
 
+  const handleBlur = () => {
+    setShowSearch(false);
+  };
   const getSearchSuggestions = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
@@ -61,7 +64,7 @@ function Header() {
             type="text"
             placeholder="Search"
             onFocus={() => setShowSearch(true)}
-            onBlur={() => setShowSearch(false)}
+            onBlur={() => setTimeout(handleBlur, 500)}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button className="bg-gray-100 w-16 rounded-r-full h-9">🔎︎</button>
@@ -71,13 +74,9 @@ function Header() {
             <ul>
               {suggestions.length !== 0 &&
                 suggestions.map((data, index) => (
-                  <li
-                    className="px-2 py-1 hover:bg-gray-100"
-                    key={index}
-                    onClick={() => (console.log("Side pressed"))}
-                  >
-                    🔎︎ {data}
-                  </li>
+                  <Link to={"/result/" + data} key={index}>
+                    <li className="px-2 py-1 hover:bg-gray-100">🔎︎ {data}</li>
+                  </Link>
                 ))}
             </ul>
           </div>

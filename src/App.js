@@ -9,6 +9,7 @@ import Header from "./Components/Header";
 import MainContainer from "./Components/MainContainer";
 import WatchPage from "./Components/WatchPage";
 import store from "./Uttils/Store";
+import Result from "./Components/Result";
 
 const appRouter = createHashRouter([
   {
@@ -39,6 +40,10 @@ const appRouter = createHashRouter([
       {
         path: "demo2",
         element: <Demo2 />,
+      },
+      {
+        path: "/result/:data",
+        element: <Result />,
       },
     ],
   },
